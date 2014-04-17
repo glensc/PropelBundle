@@ -66,7 +66,7 @@ class PropelParamConverter implements ParamConverterInterface
 
     /**
      * @param Request                $request
-     * @param ConfigurationInterface $configuration
+     * @param ParamConverter $configuration
      *
      * @return bool
      *
@@ -74,7 +74,7 @@ class PropelParamConverter implements ParamConverterInterface
      * @throws NotFoundHttpException
      * @throws \Exception
      */
-    public function apply(Request $request, ConfigurationInterface $configuration)
+    public function apply(Request $request, ParamConverter $configuration)
     {
         $class = $configuration->getClass();
         $classQuery = $class . 'Query';
@@ -148,11 +148,11 @@ class PropelParamConverter implements ParamConverterInterface
     }
 
     /**
-     * @param ConfigurationInterface $configuration
+     * @param ParamConverter $configuration
      *
      * @return bool
      */
-    public function supports(ConfigurationInterface $configuration)
+    public function supports(ParamConverter $configuration)
     {
         if (null === ($classname = $configuration->getClass())) {
             return false;
